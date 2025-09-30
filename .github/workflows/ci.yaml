@@ -15,7 +15,7 @@ jobs:
       matrix:
         include:
           - {os: macOS-latest}
-          - {os: ubuntu-latest}
+          #- {os: ubuntu-latest}
 
     runs-on: ${{ matrix.os }}
 
@@ -25,6 +25,9 @@ jobs:
 
       - name: Setup
         uses: eddelbuettel/github-actions/r-ci@master
+
+      - name: List
+        run: ls -lR /opt/gfortran
 
       - name: Dependencies
         run: ./run.sh install_deps
