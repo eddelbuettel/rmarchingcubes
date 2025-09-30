@@ -14,12 +14,15 @@ jobs:
       image: rocker/r2u:latest
 
     steps:
-      - uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v5
+
+      #- name: SessionInfo
+      #  shell: Rscript {0}
+      #  run: sessionInfo()
+
       - name: SessionInfo
-        shell: Rscript {0}
-        run: sessionInfo()
-	
+        run: R -q -e 'sessionInfo()'
+
       #- name: System Dependencies
       #  # can be used to install e.g. cmake or other build dependencies
       #  run: apt update -qq && apt install --yes --no-install-recommends cmake git
