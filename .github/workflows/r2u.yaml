@@ -26,10 +26,13 @@ jobs:
       #- name: System Dependencies
       #  # can be used to install e.g. cmake or other build dependencies
       #  run: apt update -qq && apt install --yes --no-install-recommends cmake git
-      
+
       - name: Package Dependencies
-        shell: Rscript {0}
-        run: remotes::install_deps(".", dependencies=TRUE)
+        run: R -q -e 'remotes::install_deps(".", dependencies=TRUE)'
+
+      #- name: Package Dependencies
+      #  shell: Rscript {0}
+      #  run: remotes::install_deps(".", dependencies=TRUE)
 	
       - name: Build Package
         run: R CMD build --no-build-vignettes --no-manual .
